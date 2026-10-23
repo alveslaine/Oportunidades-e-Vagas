@@ -1,0 +1,59 @@
+<main>
+  <div class="titulo">
+      <h1>Vagas e Oportunidades</h1>
+      <p>Controle de candidaturas enviadas!</p>
+  </div>
+<section class="dashboard-section">
+  <div class="total">
+      <h2>Total de Candidaturas</h2>
+      <p>-</p>
+  </div>
+  <div class="andamento">
+      <h2>Candidaturas em Andamento</h2>
+      <p>-</p>
+  </div>
+</section>
+
+<section class="form-section">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Empresa</th>
+        <th>Descrição</th>
+        <th>Salário</th>
+        <th>Contrato</th>
+        <th>Modalidade</th>
+        <th>Inscrição</th>
+        <th>Plataforma</th>
+        <th>Link</th>
+        <th>Status</th>
+        <th>-</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (vaga of vagas; track vaga.id)  {
+      <tr>
+        <td>{{vaga.id}}</td>
+        <td>{{vaga.nome}}</td>
+        <td>{{vaga.empresa}}</td>
+        <td>{{vaga.descricao}}</td>
+        <td>{{vaga.salario}}</td>
+        <td>{{vaga.contrato}}</td>
+        <td>{{vaga.modalidade}}</td>
+        <td>{{vaga.inscricao}}</td>
+        <td>{{vaga.plataforma}}</td>
+        <td>{{vaga.link}}</td>
+        <td>{{vaga.status}}</td>
+        <td>Editar e Excluir</td>
+      </tr>}
+    </tbody>
+  </table>
+
+</section>
+<footer>
+  <h2>Desenvolvido por Elaine Alves!</h2>
+</footer>
+</main>
