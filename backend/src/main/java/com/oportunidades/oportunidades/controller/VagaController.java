@@ -51,22 +51,22 @@ public class VagaController {
 				.body(vagaRepository.save(vaga));
 	}
 	
-	@PutMapping
-	public ResponseEntity<Vaga> put(@Valid @RequestBody Vaga vaga){
-		return vagaRepository.findById(vaga.getId())
-				.map(resposta -> ResponseEntity.status(HttpStatus.OK)
-						.body(vagaRepository.save(vaga)))
-				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-	}
+	@PutMapping("/{id}")
+	public ResponseEntity<Vaga> put(@PathVariable Long id, @Valid @RequestBody Vaga vaga){
+		return vagaRepository.findById(id)
+				.map(resposta -> {vaga.setId(id);
+		            return ResponseEntity.ok(vagaRepository.save(vaga));
+		            })
+		        .orElse(ResponseEntity.notFound().build());
+		}
 	
-	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Long id) {
-		Optional<Vaga> categoria = vagaRepository.findById(id);
-		
-		if(categoria.isEmpty()) 
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-			vagaRepository.deleteById(id);
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
+	    if (!vagaRepository.existsById(id)) {
+	        return ResponseEntity.notFound().build();
+	    }
+	    vagaRepository.deleteById(id);
+	    return ResponseEntity.noContent().build();
 	}
 	
 }

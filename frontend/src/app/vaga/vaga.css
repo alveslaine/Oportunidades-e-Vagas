@@ -150,4 +150,42 @@ footer h2 {
   .form-section {
     border-radius: 12px;
   }
+  
+}
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  padding: 16px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 380px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal button {
+  padding: 10px 16px;
+  margin: 8px 8px 0 0;
+  cursor: pointer;
+}
+td button {
+  display: inline-block;
+  visibility: visible;
+  opacity: 1;
+  padding: 8px 12px;
+  margin: 4px;
+  background-color: #b68bab;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }

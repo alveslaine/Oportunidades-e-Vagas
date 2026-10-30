@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, retry } from 'rxjs';
 import { VagasModel } from '../models/vagas';
 
 @Injectable({
@@ -12,6 +12,15 @@ export class VagaService {
   constructor(private http: HttpClient) {}
 
   listarTodas(): Observable<VagasModel[]> {
-    return this.http.get<VagasModel[]>(this.apiUrl);
+    return this.http.get<VagasModel[]>(this.apiUrl).pipe(
+      retry({ count: 2, delay: 1500 })
+    );
+  }
+  atualizar(id: number, vaga: VagasModel): Observable<VagasModel> {
+    return this.http.put<VagasModel>(`${this.apiUrl}/${id}`, vaga);
+  }
+
+  excluir(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

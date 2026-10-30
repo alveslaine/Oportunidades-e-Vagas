@@ -1,0 +1,13 @@
+<main>
+  <h1>Excluir Vaga</h1>
+
+  @if (vaga) {
+    <p>Tem certeza de que deseja excluir esta vaga?</p>
+
+    <p><strong>Nome:</strong> {{ vaga.nome }}</p>
+    <p><strong>Empresa:</strong> {{ vaga.empresa }}</p>
+
+    <button type="button" (click)="cancelar()">Cancelar</button>
+    <button type="button" (click)="excluir()">Excluir</button>
+  }
+</main>

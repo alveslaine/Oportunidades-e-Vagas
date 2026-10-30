@@ -5,9 +5,9 @@ export interface VagasModel{
 	descricao?: string;
 	salario?: number;
 	contrato?: string;
-	modalidade?: number;
+	modalidade?: string;
 	inscricao?: string;
 	plataforma?: string;
 	link?: string;
-	status?: number;
+	status?: string;
 }

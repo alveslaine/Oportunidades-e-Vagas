@@ -27,16 +27,16 @@ public class Vaga {
 	private String descricao;
 	private BigDecimal salario;
 	private String contrato;
-	private Long modalidade;
+	private String modalidade;
 	private LocalDate inscricao;
 	private String plataforma;
-	private Long link;
-	private Long status;
+	private String link;
+	private String status;
 	
-	public Long getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(Long status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	public Long getId() {
@@ -75,10 +75,10 @@ public class Vaga {
 	public void setContrato(String contrato) {
 		this.contrato = contrato;
 	}
-	public Long getModalidade() {
+	public String getModalidade() {
 		return modalidade;
 	}
-	public void setModalidade(Long modalidade) {
+	public void setModalidade(String modalidade) {
 		this.modalidade = modalidade;
 	}
 	public LocalDate getInscricao() {
@@ -93,10 +93,10 @@ public class Vaga {
 	public void setPlataforma(String plataforma) {
 		this.plataforma = plataforma;
 	}
-	public Long getLink() {
+	public String getLink() {
 		return link;
 	}
-	public void setLink(Long link) {
+	public void setLink(String link) {
 		this.link = link;
 	}
 

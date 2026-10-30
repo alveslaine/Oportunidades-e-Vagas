@@ -6,14 +6,14 @@
 <section class="dashboard-section">
   <div class="total">
       <h2>Total de Candidaturas</h2>
-      <p>-</p>
+      <p>{{ vagas().length }}</p>
   </div>
   <div class="andamento">
       <h2>Candidaturas em Andamento</h2>
       <p>-</p>
   </div>
 </section>
-
+<button>Adicionar</button>
 <section class="form-section">
   <table>
     <thead>
@@ -34,7 +34,7 @@
     </thead>
 
     <tbody>
-      @for (vaga of vagas; track vaga.id)  {
+      @for (vaga of vagas(); track vaga.id) {
       <tr>
         <td>{{vaga.id}}</td>
         <td>{{vaga.nome}}</td>
@@ -47,12 +47,43 @@
         <td>{{vaga.plataforma}}</td>
         <td>{{vaga.link}}</td>
         <td>{{vaga.status}}</td>
-        <td>Editar e Excluir</td>
+        <td>
+          <button type="button" (click)="abrirModalEditar(vaga)">
+            Editar
+          </button>
+
+          <button type="button" (click)="abrirModalExcluir(vaga)">
+            Excluir
+          </button>
+      </td>
       </tr>}
     </tbody>
   </table>
 
 </section>
+@if (modalEditarAberto && vagaSelecionada) {
+  <div class="modal-overlay" (click)="fecharModais()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <app-editar
+        [vaga]="vagaSelecionada"
+        (cancelarEdicao)="fecharModais()"
+        (salvarEdicao)="atualizarVaga($event)">
+      </app-editar>
+    </div>
+  </div>
+}
+
+@if (modalExcluirAberto && vagaSelecionada) {
+  <div class="modal-overlay" (click)="fecharModais()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <app-excluir
+        [vaga]="vagaSelecionada"
+        (cancelarExclusao)="fecharModais()"
+        (confirmarExclusao)="excluirVaga($event)">
+      </app-excluir>
+    </div>
+  </div>
+}
 <footer>
   <h2>Desenvolvido por Elaine Alves!</h2>
 </footer>

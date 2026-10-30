@@ -1,0 +1,43 @@
+<main>
+  <h1>Editar Vaga</h1>
+  <p>{{ vagaEditada?.nome }}</p>
+
+  @if (vagaEditada) {
+    <form (ngSubmit)="concluir()">
+      <label for="nome">Nome</label>
+      <input id="nome" type="text" name="nome" [(ngModel)]="vagaEditada.nome" required>
+
+      <label for="empresa">Empresa</label>
+      <input id="empresa" type="text" name="empresa" [(ngModel)]="vagaEditada.empresa" required>
+
+      <label for="descricao">Descrição</label>
+      <input id="descricao" type="text" name="descricao" [(ngModel)]="vagaEditada.descricao">
+
+      <label for="salario">Salário</label>
+      <input id="salario" type="number" name="salario" [(ngModel)]="vagaEditada.salario">
+
+      <label for="contrato">Contrato</label>
+      <input id="contrato" type="text" name="contrato" [(ngModel)]="vagaEditada.contrato">
+
+      <label for="modalidade">Modalidade</label>
+      <input id="modalidade" type="number" name="modalidade" [(ngModel)]="vagaEditada.modalidade">
+
+      <label for="inscricao">Inscrição</label>
+      <input id="inscricao" type="date" name="inscricao" [(ngModel)]="vagaEditada.inscricao">
+
+      <label for="plataforma">Plataforma</label>
+      <input id="plataforma" type="text" name="plataforma" [(ngModel)]="vagaEditada.plataforma">
+
+      <label for="link">Link</label>
+      <input id="link" type="url" name="link" [(ngModel)]="vagaEditada.link">
+
+      <label for="status">Status</label>
+      <input id="status" type="number" name="status" [(ngModel)]="vagaEditada.status">
+
+      <div class="botoes">
+        <button type="button" (click)="cancelar()">Cancelar</button>
+        <button type="submit" (click)="concluir()">Concluir</button>
+      </div>
+    </form>
+  }
+</main>
