@@ -16,6 +16,11 @@ export class VagaService {
       retry({ count: 2, delay: 1500 })
     );
   }
+
+  adicionar(vaga: Omit<VagasModel, 'id'>): Observable<VagasModel> {
+  return this.http.post<VagasModel>(this.apiUrl, vaga);
+}
+
   atualizar(id: number, vaga: VagasModel): Observable<VagasModel> {
     return this.http.put<VagasModel>(`${this.apiUrl}/${id}`, vaga);
   }

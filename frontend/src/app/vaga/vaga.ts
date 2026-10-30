@@ -3,16 +3,18 @@ import { VagasModel } from '../models/vagas';
 import { VagaService } from '../services/vaga.service';
 import { Editar } from '../editar/editar';
 import { Excluir } from '../excluir/excluir';
+import { Adicionar } from '../adicionar/adicionar';
 
 @Component({
   selector: 'app-vaga',
-  imports: [Editar, Excluir],
+  imports: [Editar, Excluir, Adicionar],
   templateUrl: './vaga.html',
   styleUrl: './vaga.css',
 })
 export class Vaga implements OnInit {
   vagas = signal<VagasModel[]>([]);
   vagaSelecionada: VagasModel | null = null;
+  modalAdicionarAberto = false;
   modalEditarAberto = false;
   modalExcluirAberto = false;
 
@@ -29,6 +31,22 @@ export class Vaga implements OnInit {
       },
       error: (erro) => {
         console.error('Erro ao carregar vagas:', erro);
+      }
+    });
+  }
+
+  abrirModalAdicionar(): void {
+    this.modalAdicionarAberto = true;
+  }
+
+  adicionarVaga(vaga: Omit<VagasModel, 'id'>): void {
+    this.vagaService.adicionar(vaga).subscribe({
+      next: () => {
+        this.carregarVagas();
+        this.fecharModais();
+      },
+      error: (erro) => {
+        console.error('Erro ao adicionar vaga:', erro);
       }
     });
   }
@@ -68,6 +86,7 @@ export class Vaga implements OnInit {
   }
 
   fecharModais(): void {
+    this.modalAdicionarAberto = false;
     this.modalEditarAberto = false;
     this.modalExcluirAberto = false;
     this.vagaSelecionada = null;

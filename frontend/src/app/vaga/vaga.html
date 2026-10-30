@@ -13,7 +13,7 @@
       <p>-</p>
   </div>
 </section>
-<button>Adicionar</button>
+<button class="btn" type="button" (click)="abrirModalAdicionar()">+ Adicionar</button>
 <section class="form-section">
   <table>
     <thead>
@@ -84,6 +84,18 @@
     </div>
   </div>
 }
+
+@if (modalAdicionarAberto) {
+  <div class="modal-overlay" (click)="fecharModais()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <app-adicionar
+        (cancelarAdicao)="fecharModais()"
+        (salvarAdicao)="adicionarVaga($event)">
+      </app-adicionar>
+    </div>
+  </div>
+}
+
 <footer>
   <h2>Desenvolvido por Elaine Alves!</h2>
 </footer>

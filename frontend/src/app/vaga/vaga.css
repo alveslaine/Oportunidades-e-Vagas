@@ -189,3 +189,18 @@ td button {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.btn {
+  display: block;
+  margin-left: auto;
+  margin-right: 130px;
+  margin-bottom: 10px;
+  visibility: visible;
+  opacity: 1;
+  padding: 8px 12px;
+  background-color: #b68bab;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

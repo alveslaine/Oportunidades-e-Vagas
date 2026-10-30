@@ -1,0 +1,40 @@
+<main>
+  <h1>Adicionar Vaga</h1>
+
+    <form>
+      <label for="nome">Nome</label>
+      <input id="nome" type="text" name="nome" [(ngModel)]="vagaAdicionada.nome" required>
+
+      <label for="empresa">Empresa</label>
+      <input id="empresa" type="text" name="empresa" [(ngModel)]="vagaAdicionada.empresa" required>
+
+      <label for="descricao">Descrição</label>
+      <input id="descricao" type="text" name="descricao" [(ngModel)]="vagaAdicionada.descricao">
+
+      <label for="salario">Salário</label>
+      <input id="salario" type="number" name="salario" [(ngModel)]="vagaAdicionada.salario">
+
+      <label for="contrato">Contrato</label>
+      <input id="contrato" type="text" name="contrato" [(ngModel)]="vagaAdicionada.contrato">
+
+      <label for="modalidade">Modalidade</label>
+      <input id="modalidade" type="number" name="modalidade" [(ngModel)]="vagaAdicionada.modalidade">
+
+      <label for="inscricao">Inscrição</label>
+      <input id="inscricao" type="date" name="inscricao" [(ngModel)]="vagaAdicionada.inscricao">
+
+      <label for="plataforma">Plataforma</label>
+      <input id="plataforma" type="text" name="plataforma" [(ngModel)]="vagaAdicionada.plataforma">
+
+      <label for="link">Link</label>
+      <input id="link" type="url" name="link" [(ngModel)]="vagaAdicionada.link">
+
+      <label for="status">Status</label>
+      <input id="status" type="number" name="status" [(ngModel)]="vagaAdicionada.status">
+
+      <div class="botoes">
+        <button type="button" (click)="cancelar()">Cancelar</button>
+        <button type="submit" (click)="concluir()">Concluir</button>
+      </div>
+    </form>
+</main>
